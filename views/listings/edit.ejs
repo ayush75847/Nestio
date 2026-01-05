@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nestio</title>
+</head>
+<body>
+    <h3>Edit Listing</h3>
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT">
+        <label for="">Title: </label>
+        <input type="text" name="listing[title]" value="<%= listing.title %>"><br><br>
+
+        <label for="">Image: </label>
+        <input type="text" name="listing[image][url]" value="<%=listing.image.url %>"><br><br>
+
+        <label for="">Price: </label>
+        <input type="number" name="listing[price]" value="<%= listing.price %>"><br><br>
+
+        <label for="">Location: </label>
+        <input type="text" name="listing[location]" value="<%= listing.location %>"><br><br>
+
+        <label for="">Country: </label>
+        <input type="text" name="listing[country]" value="<%= listing.country %>"><br><br>
+
+        <label for="">Description: </label>
+        <textarea name="listing[description]" id="" rows="3" cols="20"><%= listing.description %></textarea><br><br>
+
+        <button>Update Listing</button>
+    </form>
+</body>
+</html>
