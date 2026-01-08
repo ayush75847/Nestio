@@ -153,3 +153,96 @@
 .navbar-nav .nav-link:nth-child(3) {
   animation-delay: 0.3s;
 }
+
+/* =========================
+   FOOTER STYLING (NESTIO)
+   ========================= */
+
+footer {
+  margin-top: 4rem;
+  backdrop-filter: blur(10px);
+  background: #d3d8dd ;
+  border-top: 1px solid rgba(102, 126, 234, 0.15);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.f-info {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  text-align: center;
+  animation: slideInUp 0.6s ease forwards;
+}
+
+/* Brand / Company Name */
+.f-info > div:nth-child(2) {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #495057;
+  letter-spacing: 0.3px;
+}
+
+/* Social Icons */
+.f-info-socials {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.f-info-socials i {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(102, 126, 234, 0.25));
+}
+
+.f-info-socials i:hover {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 4px 10px rgba(118, 75, 162, 0.45));
+}
+
+/* Footer Links */
+.f-info-links {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.f-info-links a {
+  position: relative;
+  text-decoration: none;
+  font-weight: 500;
+  color: #495057;
+  transition: color 0.3s ease;
+}
+
+/* Gradient underline */
+.f-info-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: rgb(67, 62, 62);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.f-info-links a:hover::after {
+  width: 100%;
+}
+
+/* Footer animation */
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
