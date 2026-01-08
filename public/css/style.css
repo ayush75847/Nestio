@@ -1,3 +1,155 @@
-body{
-    background-color: cyan;
+/* Navbar Styling */
+
+.navbar {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.navbar-brand {
+  transition: transform 0.3s ease;
+  margin-right: 2rem;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.navbar-brand i {
+  color: #667eea !important;
+  filter: drop-shadow(0 2px 4px rgba(102, 126, 234, 0.3));
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover i {
+  filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.5));
+  transform: rotate(360deg);
+}
+
+/* Navigation Links - Aligned to Left */
+.navbar-nav {
+  gap: 0.5rem;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.nav-link {
+  position: relative;
+  color: #495057 !important;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-color: transparent !important;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+/* Hover Effect - This applies to ALL links on hover */
+.nav-link:hover {
+  color: white !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.nav-link:hover::before {
+  width: 0;
+}
+
+/* Remove active/current page styling */
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  background-color: transparent !important;
+  color: #495057 !important;
+  box-shadow: none;
+}
+
+/* Active link hover effect */
+.nav-link.active:hover,
+.nav-link[aria-current="page"]:hover {
+  color: white !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  position: relative;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28102, 126, 234, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1.5rem !important;
+    margin: 0.25rem 0;
+    text-align: left;
+  }
+}
+
+/* Scroll Effect */
+.navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* Animation for navbar items */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-nav .nav-link {
+  animation: slideInDown 0.5s ease forwards;
+}
+
+.navbar-nav .nav-link:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.navbar-nav .nav-link:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.navbar-nav .nav-link:nth-child(3) {
+  animation-delay: 0.3s;
 }
