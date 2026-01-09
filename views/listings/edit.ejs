@@ -1,25 +1,53 @@
 <% layout('/layouts/boilerplate') -%>
-<body>
-    <h3>Edit Listing</h3>
-    <form method="post" action="/listings/<%= listing._id %>?_method=PUT">
-        <label for="">Title: </label>
-        <input type="text" name="listing[title]" value="<%= listing.title %>"><br><br>
 
-        <label for="">Image: </label>
-        <input type="text" name="listing[image][url]" value="<%=listing.image.url %>"><br><br>
+<div class="listing-form-wrapper edit-mode">
+  <div class="premium-card edit-card">
 
-        <label for="">Price: </label>
-        <input type="number" name="listing[price]" value="<%= listing.price %>"><br><br>
+    <h3 class="form-title edit-title">
+      <i class="fa-solid fa-pen-to-square"></i>
+      Edit Listing
+    </h3>
 
-        <label for="">Location: </label>
-        <input type="text" name="listing[location]" value="<%= listing.location %>"><br><br>
+    <form method="post"
+          action="/listings/<%= listing._id %>?_method=PUT"
+          class="listing-form">
 
-        <label for="">Country: </label>
-        <input type="text" name="listing[country]" value="<%= listing.country %>"><br><br>
+      <div class="form-group">
+        <label><i class="fa-solid fa-heading"></i> Title</label>
+        <input type="text" name="listing[title]" value="<%= listing.title %>">
+      </div>
 
-        <label for="">Description: </label>
-        <textarea name="listing[description]" id="" rows="3" cols="20"><%= listing.description %></textarea><br><br>
+      <div class="form-group">
+        <label><i class="fa-solid fa-image"></i> Image URL</label>
+        <input type="text" name="listing[image][url]" value="<%= listing.image.url %>">
+      </div>
 
-        <button>Update Listing</button>
+      <div class="form-group">
+        <label><i class="fa-solid fa-indian-rupee-sign"></i> Price / night</label>
+        <input type="number" name="listing[price]" value="<%= listing.price %>">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label><i class="fa-solid fa-location-dot"></i> Location</label>
+          <input type="text" name="listing[location]" value="<%= listing.location %>">
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-flag"></i> Country</label>
+          <input type="text" name="listing[country]" value="<%= listing.country %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fa-solid fa-pen"></i> Description</label>
+        <textarea name="listing[description]" rows="4"><%= listing.description %></textarea>
+      </div>
+
+      <button class="submit-btn update-btn">
+        <i class="fa-solid fa-rotate"></i> Update Listing
+      </button>
+
     </form>
-</body>
+  </div>
+</div>

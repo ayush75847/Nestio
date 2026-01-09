@@ -1,25 +1,51 @@
 <% layout('/layouts/boilerplate') -%>
-<body>
-    <h3>Create New Listing</h3>
-    <form method="post" action="/listings/create">
-        <label for="">Title: </label>
-        <input type="text" name="listing[title]"><br><br>
 
-        <label for="">Image: </label>
-        <input type="text" name="listing[image][url]" placeholder="image url"><br><br>
+    <div class="listing-form-wrapper">
+        <div class="listing-form-card premium-card">
 
-        <label for="">Price: </label>
-        <input type="number" name="listing[price]"><br><br>
+            <h3 class="form-title">
+                <i class="fa-solid fa-house-circle-check"></i>
+                Create New Listing
+            </h3>
 
-        <label for="">Location: </label>
-        <input type="text" name="listing[location]"><br><br>
+            <form method="post" action="/listings/create" class="listing-form">
 
-        <label for="">Country: </label>
-        <input type="text" name="listing[country]"><br><br>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-heading"></i> Title</label>
+                    <input type="text" name="listing[title]" placeholder="Name of Place">
+                </div>
 
-        <label for="">Description: </label>
-        <textarea name="listing[description]" id="" placeholder="Write here..." rows="3" cols="20"></textarea><br><br>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-image"></i> Image URL</label>
+                    <input type="text" name="listing[image][url]" placeholder="https://image.com/photo.jpg">
+                </div>
 
-        <button>Add Listing</button>
-    </form>
-</body>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-indian-rupee-sign"></i> Price / night</label>
+                    <input type="number" name="listing[price]" placeholder="Amount">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-location-dot"></i> Location</label>
+                        <input type="text" name="listing[location]" placeholder="Dehradun">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-flag"></i> Country</label>
+                        <input type="text" name="listing[country]" placeholder="India">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-pen"></i> Description</label>
+                    <textarea name="listing[description]" rows="4" placeholder="Describe your place..."></textarea>
+                </div>
+
+                <button class="submit-btn">
+                    <i class="fa-solid fa-plus"></i> Add Listing
+                </button>
+
+            </form>
+        </div>
+    </div>
