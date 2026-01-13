@@ -665,3 +665,95 @@ footer {
   color: #fff;
 }
 
+/* ===============================
+   Custom Validation Icons – Nestio
+   =============================== */
+
+/* Add space on the right for icons */
+.listing-form .form-control {
+  padding-right: 2.5rem;
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem 1.25rem;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Valid input – green check */
+.listing-form .form-control.is-valid {
+  border-color: #198754 !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23198654'%3e%3cpath d='M16 2l-9 12L0 7l2-2 5 5 7-8z'/%3e%3c/svg%3e");
+}
+
+/* Invalid input – red cross */
+.listing-form .form-control.is-invalid {
+  border-color: #dc3545 !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23dc3545'%3e%3cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Focus glow */
+.listing-form .form-control.is-valid:focus {
+  box-shadow: 0 0 0 0.3rem rgba(25, 135, 84, 0.3);
+}
+
+.listing-form .form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.3rem rgba(220, 53, 69, 0.3);
+}
+
+/* Optional: smoother feedback animation */
+.invalid-feedback,
+.valid-feedback {
+  font-size: 0.85rem;
+  color: #dc3545; /* keep consistent with invalid */
+  margin-top: 0.25rem;
+}
+
+/* =========================
+   Custom Alert Styling
+   ========================= */
+.custom-alert {
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, #f85032, #e73827);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(231, 56, 39, 0.35);
+  animation: slideIn 0.5s ease forwards;
+  margin-top: 20px; /* Adjust this according to your navbar height */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px; /* optional: to center and limit width */
+}
+
+.custom-alert .alert-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  animation: pulse 1.2s infinite;
+}
+
+.custom-alert .alert-message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Icon pulse */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+

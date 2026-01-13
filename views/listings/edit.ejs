@@ -10,38 +10,44 @@
 
     <form method="post"
           action="/listings/<%= listing._id %>?_method=PUT"
-          class="listing-form">
+          class="listing-form needs-validation" novalidate>
 
       <div class="form-group">
         <label><i class="fa-solid fa-heading"></i> Title</label>
-        <input type="text" name="listing[title]" value="<%= listing.title %>">
+        <input type="text" name="listing[title]" value="<%= listing.title %>" required>
+        <div class="invalid-feedback">Enter a valid title</div>
       </div>
 
       <div class="form-group">
         <label><i class="fa-solid fa-image"></i> Image URL</label>
-        <input type="text" name="listing[image][url]" value="<%= listing.image.url %>">
+        <input type="text" name="listing[image][url]" value="<%= listing.image.url %>" required>
+        <div class="invalid-feedback">Enter a valid image URL</div>
       </div>
 
       <div class="form-group">
         <label><i class="fa-solid fa-indian-rupee-sign"></i> Price / night</label>
-        <input type="number" name="listing[price]" value="<%= listing.price %>">
+        <input type="number" name="listing[price]" value="<%= listing.price %>" required>
+        <div class="invalid-feedback">Enter a valid Price</div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
           <label><i class="fa-solid fa-location-dot"></i> Location</label>
-          <input type="text" name="listing[location]" value="<%= listing.location %>">
+          <input type="text" name="listing[location]" value="<%= listing.location %>" required>
+          <div class="invalid-feedback">Enter valid Location name</div>
         </div>
 
         <div class="form-group">
           <label><i class="fa-solid fa-flag"></i> Country</label>
-          <input type="text" name="listing[country]" value="<%= listing.country %>">
+          <input type="text" name="listing[country]" value="<%= listing.country %>" required>
+          <div class="invalid-feedback">Enter valid Country name</div>
         </div>
       </div>
 
       <div class="form-group">
         <label><i class="fa-solid fa-pen"></i> Description</label>
-        <textarea name="listing[description]" rows="4"><%= listing.description %></textarea>
+        <textarea name="listing[description]" rows="4" required><%= listing.description %></textarea>
+        <div class="invalid-feedback">Add a valid description</div>
       </div>
 
       <button class="submit-btn update-btn">
