@@ -21,7 +21,10 @@
         <%- include("../includes/navbar.ejs") %>
 
             <main class="content">
-                <div class="container-fluid nestio-wide"><%- body -%></div>
+                <div class="container-fluid nestio-wide">
+                    <%- include("../includes/flash.ejs") %>
+                    <%- body -%>
+                </div>
             </main>
 
             <%- include("../includes/footer.ejs") %>
