@@ -18,14 +18,23 @@ html, body {
   flex: 1;
 }
 
-/* Navbar Styling */
+/* =========================
+   NAVBAR BASE
+========================= */
 
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
 }
+
+/* =========================
+   BRAND
+========================= */
 
 .navbar-brand {
   transition: transform 0.3s ease;
@@ -47,21 +56,40 @@ html, body {
   transform: rotate(360deg);
 }
 
-/* Navigation Links - Aligned to Left */
-.navbar-nav {
-  gap: 0.5rem;
-  margin-left: 0 !important;
-  margin-right: auto !important;
+/* =========================
+   NAV LINK GROUPS
+========================= */
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
 }
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* FORCE AUTH LINKS TO RIGHT */
+.auth-links {
+  margin-left: auto !important;
+}
+
+/* =========================
+   NAV LINKS
+========================= */
 
 .nav-link {
   position: relative;
   color: #495057 !important;
+  font-weight: 600;
   transition: all 0.3s ease;
   overflow: hidden;
   background-color: transparent !important;
 }
 
+/* Hover underline removed (your design choice) */
 .nav-link::before {
   content: '';
   position: absolute;
@@ -74,9 +102,9 @@ html, body {
   transition: width 0.3s ease;
 }
 
-/* Hover Effect - This applies to ALL links on hover */
+/* Hover effect */
 .nav-link:hover {
-  color: white !important;
+  color: #ffffff !important;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
@@ -86,7 +114,7 @@ html, body {
   width: 0;
 }
 
-/* Remove active/current page styling */
+/* Active state reset */
 .nav-link.active,
 .nav-link[aria-current="page"] {
   background-color: transparent !important;
@@ -94,7 +122,7 @@ html, body {
   box-shadow: none;
 }
 
-/* Active link hover effect */
+/* Active hover */
 .nav-link.active:hover,
 .nav-link[aria-current="page"]:hover {
   color: white !important;
@@ -103,10 +131,26 @@ html, body {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
-/* Navbar Toggler */
+/* =========================
+   LOGOUT SPECIAL STYLE
+========================= */
+
+.nav-link.text-danger {
+  color: #e74c3c !important;
+}
+
+.nav-link.text-danger:hover {
+  background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* =========================
+   NAVBAR TOGGLER
+========================= */
+
 .navbar-toggler {
-  position: relative;
-  padding: 0.5rem;
+  border: none;
   transition: all 0.3s ease;
   margin-left: auto;
 }
@@ -119,7 +163,10 @@ html, body {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28102, 126, 234, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Responsive Design */
+/* =========================
+   RESPONSIVE (MOBILE)
+========================= */
+
 @media (max-width: 991px) {
   .navbar-collapse {
     margin-top: 1rem;
@@ -127,26 +174,30 @@ html, body {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .navbar-nav {
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .auth-links {
+    margin-left: 0 !important;
+    margin-top: 1rem;
   }
 
   .nav-link {
     padding: 0.75rem 1.5rem !important;
-    margin: 0.25rem 0;
     text-align: left;
   }
 }
 
-/* Scroll Effect */
-.navbar.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-  background: rgba(255, 255, 255, 0.98) !important;
-}
+/* =========================
+   ANIMATION
+========================= */
 
-/* Animation for navbar items */
 @keyframes slideInDown {
   from {
     transform: translateY(-20px);
@@ -162,17 +213,10 @@ html, body {
   animation: slideInDown 0.5s ease forwards;
 }
 
-.navbar-nav .nav-link:nth-child(1) {
-  animation-delay: 0.1s;
-}
+.navbar-nav .nav-link:nth-child(1) { animation-delay: 0.1s; }
+.navbar-nav .nav-link:nth-child(2) { animation-delay: 0.2s; }
+.navbar-nav .nav-link:nth-child(3) { animation-delay: 0.3s; }
 
-.navbar-nav .nav-link:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.navbar-nav .nav-link:nth-child(3) {
-  animation-delay: 0.3s;
-}
 
 /* =========================
    FOOTER STYLING (NESTIO)
@@ -330,8 +374,6 @@ footer {
 }
 
 /* ===== Create Listing Page ===== */
-
-/* ===== Premium Create Listing UI ===== */
 
 .listing-form-wrapper {
   min-height: 80vh;
@@ -663,6 +705,27 @@ footer {
 .delete-btn:hover {
   background: #dc3545;
   color: #fff;
+}
+
+/* Owner info */
+.listing-image p {
+  margin-top: 1rem;
+  margin-right: .5rem;
+  max-width: 100%;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  color: #6b7280;
+  text-align: right;
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.listing-image p i {
+  font-style: normal;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-left: 0.25rem;
 }
 
 /* ===============================
@@ -1159,4 +1222,137 @@ footer {
   background-color: #dc3545;
   color: #ffffff;
 }
+
+/* SIGNUP CSS — Nestio Theme Aligned */
+
+/* AUTH PAGE WRAPPER */
+.auth-wrapper {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  background:
+    radial-gradient(circle at top left, rgba(102,126,234,0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(118,75,162,0.12), transparent 60%);
+}
+
+/* CARD (Glassmorphism like premium-card) */
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  border-radius: 22px;
+  padding: 2.6rem 2.4rem;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  animation: floatIn 0.6s ease;
+}
+
+/* Glow border */
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* HEADINGS */
+.auth-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  color: #343a40;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* ICON COLOR (Nestio gradient tone) */
+.form-group i {
+  margin-right: 6px;
+  color: #764ba2;
+}
+
+/* INPUT FEEL (works with your existing form styles) */
+.auth-card .form-control:focus {
+  box-shadow:
+    0 0 0 0.2rem rgba(102, 126, 234, 0.25),
+    0 8px 20px rgba(102,126,234,0.25);
+  transform: translateY(-1px);
+}
+
+/* BUTTON (match submit-btn vibe) */
+.auth-btn {
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(118, 75, 162, 0.5);
+}
+
+.auth-btn:active {
+  transform: translateY(-1px);
+}
+
+/* FOOTER */
+.auth-footer {
+  text-align: center;
+  margin-top: 1.3rem;
+  font-size: 0.95rem;
+}
+
+.auth-footer a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animation (same language as premium-card) */
+@keyframes floatIn {
+  from {
+    transform: translateY(30px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+
+
 

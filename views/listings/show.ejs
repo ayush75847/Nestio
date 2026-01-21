@@ -6,6 +6,9 @@
       <!-- Image -->
       <div class="listing-image">
         <img src="<%= listing.image.url %>" alt="<%= listing.title %>">
+        <p>Owned By: <i>
+            <%= listing.owner.username %>
+          </i></p>
       </div>
 
       <!-- Details -->
@@ -30,88 +33,120 @@
         </p>
 
         <!-- Actions -->
-        <div class="listing-actions">
-          <a href="/listings/<%= listing._id %>/edit" class="btn edit-btn">
-            <i class="fa-solid fa-pen"></i> Edit
-          </a>
+        <% if(currUser && currUser._id.toString()===listing.owner._id.toString()) { %>
+          <div class="listing-actions">
+            <a href="/listings/<%= listing._id %>/edit" class="btn edit-btn">
+              <i class="fa-solid fa-pen"></i> Edit
+            </a>
 
-          <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
-            <button class="btn delete-btn">
-              <i class="fa-solid fa-trash"></i> Delete
-            </button>
-          </form>
-        </div>
+            <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
+              <button class="btn delete-btn">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>
+            </form>
+          </div>
+
+          <% } %>
+
       </div>
     </div>
   </div>
 
-  <div class="listing-review-section">
+  <% if(currUser) { %>
+    <div class="listing-review-section">
+      <h3 class="review-title">Leave a Review</h3>
+      <div class="review-layout">
 
-    <h3 class="review-title">Leave a Review</h3>
+        <!-- LEFT: Review Form (unchanged) -->
+        <form class="review-form needs-validation" method="POST" action="/listings/<%= listing._id %>/reviews"
+          novalidate>
 
-    <div class="review-layout">
+          <div class="form-group">
+            <label>Rating</label>
+            <input type="number" min="1" max="5" name="review[rating]" class="form-control" required>
+            <div class="invalid-feedback">Enter Rating!</div>
+          </div>
 
-      <!-- LEFT: Review Form (unchanged) -->
-      <form class="review-form needs-validation" method="POST" action="/listings/<%= listing._id %>/reviews" novalidate>
+          <div class="form-group">
+            <label>Comment</label>
+            <textarea name="review[comment]" class="form-control" required></textarea>
+            <div class="invalid-feedback">Enter a comment!</div>
+          </div>
 
-        <div class="form-group">
-          <label>Rating</label>
-          <input type="number" min="1" max="5" name="review[rating]" class="form-control" required>
-          <div class="invalid-feedback">Enter Rating!</div>
-        </div>
-
-        <div class="form-group">
-          <label>Comment</label>
-          <textarea name="review[comment]" class="form-control" required></textarea>
-          <div class="invalid-feedback">Enter a comment!</div>
-        </div>
-
-        <button class="submit-btn">Submit Review</button>
-      </form>
-
-      <!-- RIGHT: Friendly Message -->
-      <div class="review-side-info">
-        <h3>We value your feedback 💙</h3>
-        <p><b>Your experience matters to us.
-          Share your thoughts and help others find the perfect stay.
-        </b></p>
-        <ul>
-          <li>⭐ Honest ratings help the community</li>
-          <li>📝 Short & clear reviews are best</li>
-          <li>🤝 Respectful feedback is appreciated</li>
-        </ul>
-
-        <p class="review-note">
-          Thank you for being part of <strong>Nestio</strong>.
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="reviews-container">
-  <h3 class="reviews-heading">
-    All Reviews
-    <span class="reviews-count">(<%= listing.reviews.length %>)</span>
-  </h3>
-
-  <ul class="reviews-list">
-    <% for (let review of listing.reviews) { %>
-      <li class="review-card">
-        <div class="review-header">
-          <p class="review-user">Ayush</p>
-          <span class="review-stars">⭐ <%= review.rating %>/5</span>
-        </div>
-
-        <p class="review-comment">
-          <%= review.comment %>
-        </p>
-
-        <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" class="review-delete-form">
-          <button type="submit" class="review-delete-btn"><i class="fa-solid fa-trash"></i></button>
+          <button class="submit-btn">Submit Review</button>
         </form>
-      </li>
-    <% } %>
-  </ul>
-</div>
+
+        <!-- RIGHT: Friendly Message -->
+        <div class="review-side-info">
+          <h3>We value your feedback 💙</h3>
+          <p><b>Your experience matters to us.
+              Share your thoughts and help others find the perfect stay.
+            </b></p>
+          <ul>
+            <li>⭐ Honest ratings help the community</li>
+            <li>📝 Short & clear reviews are best</li>
+            <li>🤝 Respectful feedback is appreciated</li>
+          </ul>
+
+          <p class="review-note">
+            Thank you for being part of <strong>Nestio</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <% }else{ %>
+      <div class="listing-review-section">
+        <div class="review-layout">
+          <form class="review-form needs-validation" method="POST" action="/listings/<%= listing._id %>/reviews"
+            novalidate>
+            <button class="submit-btn">Add a Review</button>
+          </form>
+
+          <!-- RIGHT: Friendly Message -->
+          <div class="review-side-info">
+            <h3>We value your feedback 💙</h3>
+            <p><b>Your experience matters to us.
+                Share your thoughts and help others find the perfect stay.
+              </b></p>
+            <ul>
+              <li>⭐ Honest ratings help the community</li>
+              <li>📝 Short & clear reviews are best</li>
+              <li>🤝 Respectful feedback is appreciated</li>
+            </ul>
+
+            <p class="review-note">
+              Thank you for being part of <strong>Nestio</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+        <div class="reviews-container">
+          <h3 class="reviews-heading">
+            All Reviews
+            <span class="reviews-count">(<%= listing.reviews.length %>)</span>
+          </h3>
+
+          <ul class="reviews-list">
+            <% for (let review of listing.reviews) { %>
+              <li class="review-card">
+                <div class="review-header">
+                  <p class="review-user">
+                    <%= review.author.username %>
+                  </p>
+                  <span class="review-stars">⭐ <%= review.rating %>/5</span>
+                </div>
+
+                <p class="review-comment">
+                  <%= review.comment %>
+                </p>
+
+                <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                  class="review-delete-form">
+                  <button type="submit" class="review-delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </form>
+              </li>
+              <% } %>
+          </ul>
+        </div>

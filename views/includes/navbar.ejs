@@ -5,26 +5,33 @@
       <i class="fa-solid fa-compass fa-2xl" style="color: #e66565;"></i>
     </a>
 
-    <button class="navbar-toggler border-0" type="button"
-      data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <!-- LEFT LINKS -->
       <div class="navbar-nav gap-2">
+        <a class="nav-link fw-semibold px-3 rounded-pill" href="/">Home</a>
+        <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings">All Listings</a>
+        <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings/new">Add New Listing</a>
+      </div>
 
-        <a class="nav-link fw-semibold px-3 rounded-pill"
-           aria-current="page" href="/">
-          Home 
-        </a>
+      <!-- RIGHT AUTH LINKS -->
+      <div class="navbar-nav ms-auto pe-2 gap-2 auth-links">
 
-        <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings">
-          All Listings
-        </a>
+        <% if (!currUser) { %>
+          <a class="nav-link fw-semibold px-3 rounded-pill" href="/signup">Sign Up</a>
+          <a class="nav-link fw-semibold px-3 rounded-pill" href="/login">Login</a>
+          <% } %>
 
-        <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings/new">
-          Add New Listing
-        </a>
+            <% if (currUser) { %>
+              <a class="nav-link fw-semibold px-3 rounded-pill text-danger" href="/logout">
+                Log Out
+              </a>
+              <% } %>
 
       </div>
     </div>

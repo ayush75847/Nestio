@@ -1,0 +1,47 @@
+<% layout('/layouts/boilerplate') -%>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1 class="auth-title">Login to your Nestio account</h1>
+    <p class="auth-subtitle">Find and list amazing stays</p>
+
+    <form action="/login" method="post" class="needs-validation" novalidate>
+
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-user"></i> Username
+        </label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Your username"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please enter a username</div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-lock"></i> Password
+        </label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Password is required</div>
+      </div>
+
+      <button class="auth-btn" type="submit">
+        Log in
+      </button>
+
+      <p class="auth-footer">
+        Create an account?
+        <a href="/signup">SignUp</a>
+      </p>
+    </form>
+  </div>
+</div>
