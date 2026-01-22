@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Review = require("./review.js");
+const { required } = require("joi");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -28,19 +29,31 @@ const listingSchema = new Schema({
     price: Number,
     location: String,
     country: String,
-    reviews:[{
+    reviews: [{
         type: Schema.Types.ObjectId,
-        ref:"Review",
+        ref: "Review",
     }],
-    owner:{
+    owner: {
         type: Schema.Types.ObjectId,
-        ref:"User",
+        ref: "User",
+    },
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            default: 'Point',
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required:  true
+        }
     }
 });
 
-listingSchema.post("findOneAndDelete", async(listing)=>{
-    if(listing){
-        await Review.deleteMany({_id: {$in : listing.reviews}});
+listingSchema.post("findOneAndDelete", async (listing) => {
+    if (listing) {
+        await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
 });
 

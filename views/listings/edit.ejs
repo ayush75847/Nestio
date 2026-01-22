@@ -1,59 +1,63 @@
 <% layout('/layouts/boilerplate') -%>
 
-<div class="listing-form-wrapper edit-mode">
-  <div class="premium-card edit-card">
+  <div class="listing-form-wrapper edit-mode">
+    <div class="premium-card edit-card">
 
-    <h3 class="form-title edit-title">
-      <i class="fa-solid fa-pen-to-square"></i>
-      Edit Listing
-    </h3>
+      <h3 class="form-title edit-title">
+        <i class="fa-solid fa-pen-to-square"></i>
+        Edit Listing
+      </h3>
 
-    <form method="post"
-          action="/listings/<%= listing._id %>?_method=PUT"
-          class="listing-form needs-validation" novalidate>
+      <form method="post" action="/listings/<%= listing._id %>?_method=PUT" class="listing-form needs-validation"
+        enctype="multipart/form-data" novalidate>
 
-      <div class="form-group">
-        <label><i class="fa-solid fa-heading"></i> Title</label>
-        <input type="text" name="listing[title]" value="<%= listing.title %>" required>
-        <div class="invalid-feedback">Enter a valid title</div>
-      </div>
-
-      <div class="form-group">
-        <label><i class="fa-solid fa-image"></i> Image URL</label>
-        <input type="text" name="listing[image][url]" value="<%= listing.image.url %>" required>
-        <div class="invalid-feedback">Enter a valid image URL</div>
-      </div>
-
-      <div class="form-group">
-        <label><i class="fa-solid fa-indian-rupee-sign"></i> Price / night</label>
-        <input type="number" name="listing[price]" value="<%= listing.price %>" required>
-        <div class="invalid-feedback">Enter a valid Price</div>
-      </div>
-
-      <div class="form-row">
         <div class="form-group">
-          <label><i class="fa-solid fa-location-dot"></i> Location</label>
-          <input type="text" name="listing[location]" value="<%= listing.location %>" required>
-          <div class="invalid-feedback">Enter valid Location name</div>
+          <label><i class="fa-solid fa-heading"></i> Title</label>
+          <input type="text" name="listing[title]" value="<%= listing.title %>" required>
+          <div class="invalid-feedback">Enter a valid title</div>
+        </div>
+
+        <div class="">
+          <label><i class="fa-solid fa-image"></i>Original Image</label><br>
+          <img src="<%= changeImageUrl %>" alt="">
+        </div><br>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-image"></i> Image</label>
+          <input type="file" name="listing[image]">
+          <div class="invalid-feedback">Upload a valid image</div>
         </div>
 
         <div class="form-group">
-          <label><i class="fa-solid fa-flag"></i> Country</label>
-          <input type="text" name="listing[country]" value="<%= listing.country %>" required>
-          <div class="invalid-feedback">Enter valid Country name</div>
+          <label><i class="fa-solid fa-indian-rupee-sign"></i> Price / night</label>
+          <input type="number" name="listing[price]" value="<%= listing.price %>" required>
+          <div class="invalid-feedback">Enter a valid Price</div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label><i class="fa-solid fa-pen"></i> Description</label>
-        <textarea name="listing[description]" rows="4" required><%= listing.description %></textarea>
-        <div class="invalid-feedback">Add a valid description</div>
-      </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fa-solid fa-location-dot"></i> Location</label>
+            <input type="text" name="listing[location]" value="<%= listing.location %>" required>
+            <div class="invalid-feedback">Enter valid Location name</div>
+          </div>
 
-      <button class="submit-btn update-btn">
-        <i class="fa-solid fa-rotate"></i> Update Listing
-      </button>
+          <div class="form-group">
+            <label><i class="fa-solid fa-flag"></i> Country</label>
+            <input type="text" name="listing[country]" value="<%= listing.country %>" required>
+            <div class="invalid-feedback">Enter valid Country name</div>
+          </div>
+        </div>
 
-    </form>
+        <div class="form-group">
+          <label><i class="fa-solid fa-pen"></i> Description</label>
+          <textarea name="listing[description]" rows="4" required><%= listing.description %></textarea>
+          <div class="invalid-feedback">Add a valid description</div>
+        </div>
+
+        <button class="submit-btn update-btn">
+          <i class="fa-solid fa-rotate"></i> Update Listing
+        </button>
+
+      </form>
+    </div>
   </div>
-</div>

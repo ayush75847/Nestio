@@ -1,3 +1,7 @@
+<script>
+  const listing= <%- JSON.stringify(listing) %>
+</script>
+
 <% layout('/layouts/boilerplate') -%>
 
   <div class="listing-show-wrapper">
@@ -45,13 +49,23 @@
               </button>
             </form>
           </div>
-
           <% } %>
-
       </div>
     </div>
   </div>
 
+  <!-- map -->
+  <div class="listing-map-section premium-card">
+    <h3 class="map-title">
+      <i class="fa-solid fa-map-location-dot"></i> Location
+    </h3>
+
+    <div id="map">
+    </div>
+  </div>
+
+
+  <!-- review section -->
   <% if(currUser) { %>
     <div class="listing-review-section">
       <h3 class="review-title">Leave a Review</h3>
@@ -122,31 +136,33 @@
       </div>
       <% } %>
 
-        <div class="reviews-container">
-          <h3 class="reviews-heading">
-            All Reviews
-            <span class="reviews-count">(<%= listing.reviews.length %>)</span>
-          </h3>
+        <% if(listing.reviews.length>0) { %>
+          <div class="reviews-container">
+            <h3 class="reviews-heading">
+              All Reviews
+              <span class="reviews-count">(<%= listing.reviews.length %>)</span>
+            </h3>
 
-          <ul class="reviews-list">
-            <% for (let review of listing.reviews) { %>
-              <li class="review-card">
-                <div class="review-header">
-                  <p class="review-user">
-                    <%= review.author.username %>
+            <ul class="reviews-list">
+              <% for (let review of listing.reviews) { %>
+                <li class="review-card">
+                  <div class="review-header">
+                    <p class="review-user">
+                      @<%= review.author.username %>
+                    </p>
+                    <span class="review-stars">⭐ <%= review.rating %>/5</span>
+                  </div>
+
+                  <p class="review-comment">
+                    <%= review.comment %>
                   </p>
-                  <span class="review-stars">⭐ <%= review.rating %>/5</span>
-                </div>
 
-                <p class="review-comment">
-                  <%= review.comment %>
-                </p>
-
-                <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-                  class="review-delete-form">
-                  <button type="submit" class="review-delete-btn"><i class="fa-solid fa-trash"></i></button>
-                </form>
-              </li>
-              <% } %>
-          </ul>
-        </div>
+                  <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                    class="review-delete-form">
+                    <button type="submit" class="review-delete-btn"><i class="fa-solid fa-trash"></i></button>
+                  </form>
+                </li>
+                <% } %>
+            </ul>
+          </div>
+          <% } %>

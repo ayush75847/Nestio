@@ -8,7 +8,7 @@
                 Create New Listing
             </h3>
 
-            <form method="post" action="/listings/create" class="listing-form needs-validation" novalidate>
+            <form method="post" action="/listings" class="listing-form needs-validation" enctype="multipart/form-data" novalidate>
 
                 <div class="form-group">
                     <label><i class="fa-solid fa-heading"></i> Title</label>
@@ -17,8 +17,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label><i class="fa-solid fa-image"></i> Image URL</label>
-                    <input type="text" name="listing[image][url]" placeholder="https://image.com/photo.jpg" class="form-control">
+                    <label><i class="fa-solid fa-image"></i> Upload Image</label>
+                    <input type="file" name="listing[image]" class="form-control" required>
+                     <div class="invalid-feedback">Upload a image</div>
                 </div>
 
                 <div class="form-group">

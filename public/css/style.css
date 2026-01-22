@@ -1353,6 +1353,57 @@ footer {
   }
 }
 
+/* ===============================
+   MAP SECTION – NESTIO THEME
+   =============================== */
+
+.listing-map-section {
+  max-width: 900px;            /* same as listing card */
+  margin: 0 auto 3rem;         /* center + spacing before reviews */
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.map-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2f3a5f;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-title i {
+  color: #667eea;
+}
+
+/* Map container */
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;         /* matches image radius */
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Leaflet tweaks to match theme */
+.leaflet-control-zoom {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+.leaflet-popup-content b {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+
+
 
 
 
