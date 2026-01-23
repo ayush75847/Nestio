@@ -2,9 +2,24 @@ const Listing = require("../models/listing.js");
 const axios = require("axios");
 
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
+    const search = req.query.search?.trim();
+    let listings = [];
+
+    if (search) {
+        listings = await Listing.find({
+            $or: [
+                { title: { $regex: search, $options: "i" } },
+                { location: { $regex: search, $options: "i" } },
+                { country: { $regex: search, $options: "i" } },
+            ],
+        });
+    } else {
+        listings = await Listing.find({});
+    }
+
+    res.render("listings/index.ejs", { listings, search });
 };
+
 
 module.exports.newListing = (req, res) => {
     res.render("listings/new.ejs");

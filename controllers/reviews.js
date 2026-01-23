@@ -13,10 +13,12 @@ module.exports.addReview= async (req, res) => {
     }
     let newReview = new Review(req.body.review);
     newReview.author = req.user._id;
+    if (!newReview.comment || newReview.comment.trim().length < 5) {
+        req.flash("error", "Comment should be at least 5 characters long");
+        return res.redirect(`/listings/${req.params.id}`);
+    }
     
-
     listing.reviews.push(newReview);
-
     await newReview.save();
     await listing.save();
     req.flash("success", " Review added");

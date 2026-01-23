@@ -1,10 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-white shadow-sm py-3 border-bottom sticky-top">
+<nav class="navbar navbar-expand-lg shadow-sm py-3 border-bottom sticky-top">
   <div class="container-fluid px-4">
 
+    <!-- Brand -->
     <a class="navbar-brand fw-bold" href="/">
-      <i class="fa-solid fa-compass fa-2xl" style="color: #e66565;"></i>
+      <i class="fa-solid fa-compass fa-2xl"></i>
     </a>
 
+    <!-- Toggler -->
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
@@ -13,27 +15,46 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
       <!-- LEFT LINKS -->
-      <div class="navbar-nav gap-2">
-        <a class="nav-link fw-semibold px-3 rounded-pill" href="/">Home</a>
-        <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings">All Listings</a>
-        <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings/new">Add New Listing</a>
+      <div class="navbar-section navbar-left">
+        <div class="navbar-nav gap-2">
+          <a class="nav-link fw-semibold px-3 rounded-pill" href="/">Home</a>
+          <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings">All Listings</a>
+          <a class="nav-link fw-semibold px-3 rounded-pill" href="/listings/new">Add New Listing</a>
+        </div>
+      </div>
+
+      <!-- CENTER SEARCH -->
+      <div class="navbar-section navbar-center">
+        <form class="search-form d-flex" role="search" action="/listings" method="get">
+          <input
+            class="form-control search-input"
+            type="search"
+            placeholder="Search listings..."
+            aria-label="Search"
+            name="search"
+          />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
       </div>
 
       <!-- RIGHT AUTH LINKS -->
-      <div class="navbar-nav ms-auto pe-2 gap-2 auth-links">
-
-        <% if (!currUser) { %>
-          <a class="nav-link fw-semibold px-3 rounded-pill" href="/signup">Sign Up</a>
-          <a class="nav-link fw-semibold px-3 rounded-pill" href="/login">Login</a>
+      <div class="navbar-section navbar-right auth-links">
+        <div class="navbar-nav gap-2">
+          <% if (!currUser) { %>
+            <a class="nav-link fw-semibold px-3 rounded-pill" href="/signup">Sign Up</a>
+            <a class="nav-link fw-semibold px-3 rounded-pill" href="/login">Login</a>
           <% } %>
 
-            <% if (currUser) { %>
-              <a class="nav-link fw-semibold px-3 rounded-pill text-danger" href="/logout">
-                Log Out
-              </a>
-              <% } %>
-
+          <% if (currUser) { %>
+            <a class="nav-link fw-semibold px-3 rounded-pill text-danger" href="/logout">
+              Log Out
+            </a>
+          <% } %>
+        </div>
       </div>
+
     </div>
   </div>
 </nav>

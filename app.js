@@ -17,6 +17,7 @@ const flash= require("connect-flash");
 const passport= require("passport");
 const LocalStrategy= require("passport-local");
 const User= require("./models/user.js");
+const homeRouter= require("./routes/home.js");
 
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
@@ -51,11 +52,6 @@ async function main() {
     
 };
 
-//Home Route
-app.get("/",(req, res)=>{
-    res.send("Hello, this is the root node");
-});
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -76,6 +72,7 @@ app.use((req,res,next)=>{
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/", homeRouter);
 
 
 // Middleware for non existing pages Error Handling 

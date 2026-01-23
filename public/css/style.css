@@ -3,7 +3,8 @@
   padding-right: 6rem;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -32,10 +33,6 @@ html, body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* =========================
-   BRAND
-========================= */
-
 .navbar-brand {
   transition: transform 0.3s ease;
   margin-right: 2rem;
@@ -56,10 +53,6 @@ html, body {
   transform: rotate(360deg);
 }
 
-/* =========================
-   NAV LINK GROUPS
-========================= */
-
 .navbar-collapse {
   display: flex;
   align-items: center;
@@ -71,14 +64,9 @@ html, body {
   gap: 0.5rem;
 }
 
-/* FORCE AUTH LINKS TO RIGHT */
 .auth-links {
   margin-left: auto !important;
 }
-
-/* =========================
-   NAV LINKS
-========================= */
 
 .nav-link {
   position: relative;
@@ -89,7 +77,6 @@ html, body {
   background-color: transparent !important;
 }
 
-/* Hover underline removed (your design choice) */
 .nav-link::before {
   content: '';
   position: absolute;
@@ -102,7 +89,6 @@ html, body {
   transition: width 0.3s ease;
 }
 
-/* Hover effect */
 .nav-link:hover {
   color: #ffffff !important;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
@@ -114,7 +100,6 @@ html, body {
   width: 0;
 }
 
-/* Active state reset */
 .nav-link.active,
 .nav-link[aria-current="page"] {
   background-color: transparent !important;
@@ -130,6 +115,108 @@ html, body {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
+
+/* =========================
+   NAVBAR LAYOUT
+========================= */
+
+.navbar-section {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left {
+  margin-right: auto;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-right {
+  margin-left: auto;
+}
+
+/* Responsive adjustment */
+@media (max-width: 991px) {
+  .navbar-center {
+    position: relative;
+    left: 0;
+    transform: none;
+    margin: 1rem 0;
+  }
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 320px;
+  max-width: 100%;
+}
+
+/* Input */
+.search-input {
+  flex: 1;
+  height: 42px;
+
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  padding: 0 1.2rem;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #495057;
+
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.search-input::placeholder {
+  color: #adb5bd;
+}
+
+/* Button (outside) */
+.search-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.search-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+}
+
+.search-btn:active {
+  transform: scale(0.95);
+}
+
+.search-btn i {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
 
 /* =========================
    LOGOUT SPECIAL STYLE
@@ -203,6 +290,7 @@ html, body {
     transform: translateY(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -213,9 +301,17 @@ html, body {
   animation: slideInDown 0.5s ease forwards;
 }
 
-.navbar-nav .nav-link:nth-child(1) { animation-delay: 0.1s; }
-.navbar-nav .nav-link:nth-child(2) { animation-delay: 0.2s; }
-.navbar-nav .nav-link:nth-child(3) { animation-delay: 0.3s; }
+.navbar-nav .nav-link:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.navbar-nav .nav-link:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.navbar-nav .nav-link:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
 
 /* =========================
@@ -225,7 +321,7 @@ html, body {
 footer {
   margin-top: 4rem;
   backdrop-filter: blur(10px);
-  background: #d3d8dd ;
+  background: #d3d8dd;
   border-top: 1px solid rgba(102, 126, 234, 0.15);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -243,7 +339,7 @@ footer {
 }
 
 /* Brand / Company Name */
-.f-info > div:nth-child(2) {
+.f-info>div:nth-child(2) {
   font-weight: 600;
   font-size: 1rem;
   color: #495057;
@@ -305,6 +401,7 @@ footer {
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -369,8 +466,8 @@ footer {
   }
 }
 
-.listing-link{
-    text-decoration: none;
+.listing-link {
+  text-decoration: none;
 }
 
 /* ===== Create Listing Page ===== */
@@ -382,8 +479,8 @@ footer {
   align-items: center;
   padding: 2.5rem 1rem;
   background:
-    radial-gradient(circle at top left, rgba(102,126,234,0.12), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(118,75,162,0.12), transparent 60%);
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.12), transparent 60%);
 }
 
 /* Card */
@@ -416,7 +513,7 @@ footer {
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  
+
 }
 
 /* Title */
@@ -468,9 +565,9 @@ footer {
 .listing-form textarea {
   border-radius: 14px;
   padding: 0.65rem 0.85rem;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   font-size: 0.95rem;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   transition: all 0.25s ease;
 }
 
@@ -485,7 +582,7 @@ footer {
   border-color: #667eea;
   box-shadow:
     0 0 0 0.2rem rgba(102, 126, 234, 0.25),
-    0 8px 20px rgba(102,126,234,0.25);
+    0 8px 20px rgba(102, 126, 234, 0.25);
   transform: translateY(-1px);
 }
 
@@ -524,6 +621,7 @@ footer {
     transform: translateY(30px) scale(0.96);
     opacity: 0;
   }
+
   to {
     transform: translateY(0) scale(1);
     opacity: 1;
@@ -537,8 +635,8 @@ footer {
 /* Soft blue background */
 .listing-form-wrapper.edit-mode {
   background:
-    radial-gradient(circle at top left, rgba(102,126,234,0.18), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(118,75,162,0.18), transparent 65%);
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.18), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.18), transparent 65%);
 }
 
 /* Card glow */
@@ -571,14 +669,14 @@ footer {
 .listing-form-wrapper.edit-mode input,
 .listing-form-wrapper.edit-mode textarea {
   background: #f9faff;
-  border: 1px solid rgba(102,126,234,0.25);
+  border: 1px solid rgba(102, 126, 234, 0.25);
 }
 
 /* Input focus */
 .listing-form-wrapper.edit-mode input:focus,
 .listing-form-wrapper.edit-mode textarea:focus {
   border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102,126,234,0.2);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
 }
 
 /* Update button */
@@ -590,7 +688,7 @@ footer {
 /* Button hover */
 .listing-form-wrapper.edit-mode .update-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(102,126,234,0.45);
+  box-shadow: 0 18px 40px rgba(102, 126, 234, 0.45);
 }
 
 /* Button active */
@@ -692,14 +790,14 @@ footer {
 }
 
 .edit-btn:hover {
-  box-shadow: 0 12px 30px rgba(102,126,234,0.45);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.45);
 }
 
 /* Delete */
 .delete-btn {
   background: #fff;
   color: #dc3545;
-  border: 1px solid rgba(220,53,69,0.35);
+  border: 1px solid rgba(220, 53, 69, 0.35);
 }
 
 .delete-btn:hover {
@@ -766,7 +864,8 @@ footer {
 .invalid-feedback,
 .valid-feedback {
   font-size: 0.85rem;
-  color: #dc3545; /* keep consistent with invalid */
+  color: #dc3545;
+  /* keep consistent with invalid */
   margin-top: 0.25rem;
 }
 
@@ -785,10 +884,12 @@ footer {
   color: #fff;
   box-shadow: 0 6px 20px rgba(231, 56, 39, 0.35);
   animation: slideIn 0.5s ease forwards;
-  margin-top: 20px; /* Adjust this according to your navbar height */
+  margin-top: 20px;
+  /* Adjust this according to your navbar height */
   margin-left: auto;
   margin-right: auto;
-  max-width: 700px; /* optional: to center and limit width */
+  max-width: 700px;
+  /* optional: to center and limit width */
 }
 
 .custom-alert .alert-icon {
@@ -808,6 +909,7 @@ footer {
     transform: translateY(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -816,8 +918,15 @@ footer {
 
 /* Icon pulse */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
 }
 
 /* ===============================
@@ -829,8 +938,8 @@ footer {
   padding: 2.4rem 1rem;
   border-top: 1px solid rgba(102, 126, 234, 0.2);
   background:
-    radial-gradient(circle at top left, rgba(102,126,234,0.1), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(118,75,162,0.1), transparent 60%);
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.1), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.1), transparent 60%);
   border-radius: 22px;
 }
 
@@ -871,9 +980,10 @@ footer {
 .review-form input,
 .review-form textarea {
   padding: 0.75rem 0.95rem;
-  padding-right: 2.5rem; /* space for icon */
+  padding-right: 2.5rem;
+  /* space for icon */
   border-radius: 16px;
-  border: 1px solid rgba(102,126,234,0.3);
+  border: 1px solid rgba(102, 126, 234, 0.3);
   font-size: 0.95rem;
   font-family: inherit;
   background: rgba(255, 255, 255, 0.95);
@@ -934,8 +1044,8 @@ footer {
 }
 
 /* Show error when invalid */
-.review-form.was-validated input:invalid ~ .invalid-feedback,
-.review-form.was-validated textarea:invalid ~ .invalid-feedback {
+.review-form.was-validated input:invalid~.invalid-feedback,
+.review-form.was-validated textarea:invalid~.invalid-feedback {
   display: block;
 }
 
@@ -1036,7 +1146,8 @@ footer {
   }
 
   .review-side-info {
-    order: -1; /* show info on top on mobile */
+    order: -1;
+    /* show info on top on mobile */
   }
 }
 
@@ -1049,7 +1160,8 @@ footer {
   margin-top: 4rem;
   padding: 2.6rem 2.2rem;
   border-radius: 24px;
-  background: rgba(248, 249, 251, 0.92); /* greyish white */
+  background: rgba(248, 249, 251, 0.92);
+  /* greyish white */
   backdrop-filter: blur(10px);
   border: 1px solid rgba(37, 38, 40, 0.15);
 }
@@ -1075,7 +1187,8 @@ footer {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two per row */
+  grid-template-columns: repeat(2, 1fr);
+  /* Two per row */
   gap: 1.8rem;
 }
 
@@ -1089,7 +1202,8 @@ footer {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
-  position: relative; /* for delete button alignment */
+  position: relative;
+  /* for delete button alignment */
 }
 
 /* Header separation */
@@ -1129,17 +1243,17 @@ footer {
 }
 
 .review-delete-btn {
-   background: #fff;
+  background: #fff;
   color: #dc3545;
   border-radius: 10px;
   font-weight: 600;
-  border: 1px solid rgba(220,53,69,0.35);
+  border: 1px solid rgba(220, 53, 69, 0.35);
   cursor: pointer;
   padding: 2px 10px;
 }
 
 .review-delete-btn:hover {
-   background: #dc3545;
+  background: #dc3545;
   color: #fff;
 }
 
@@ -1148,7 +1262,8 @@ footer {
    =============================== */
 @media (max-width: 992px) {
   .reviews-list {
-    grid-template-columns: 1fr; /* One per row */
+    grid-template-columns: 1fr;
+    /* One per row */
   }
 }
 
@@ -1204,6 +1319,7 @@ footer {
     opacity: 0;
     transform: translate(-50%, -18px);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -1233,8 +1349,8 @@ footer {
   justify-content: center;
   padding: 2.5rem 1rem;
   background:
-    radial-gradient(circle at top left, rgba(102,126,234,0.12), transparent 60%),
-    radial-gradient(circle at bottom right, rgba(118,75,162,0.12), transparent 60%);
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.12), transparent 60%);
 }
 
 /* CARD (Glassmorphism like premium-card) */
@@ -1295,7 +1411,7 @@ footer {
 .auth-card .form-control:focus {
   box-shadow:
     0 0 0 0.2rem rgba(102, 126, 234, 0.25),
-    0 8px 20px rgba(102,126,234,0.25);
+    0 8px 20px rgba(102, 126, 234, 0.25);
   transform: translateY(-1px);
 }
 
@@ -1347,6 +1463,7 @@ footer {
     transform: translateY(30px) scale(0.96);
     opacity: 0;
   }
+
   to {
     transform: translateY(0) scale(1);
     opacity: 1;
@@ -1358,8 +1475,10 @@ footer {
    =============================== */
 
 .listing-map-section {
-  max-width: 900px;            /* same as listing card */
-  margin: 0 auto 3rem;         /* center + spacing before reviews */
+  max-width: 900px;
+  /* same as listing card */
+  margin: 0 auto 3rem;
+  /* center + spacing before reviews */
   padding: 2rem 1.5rem 1.5rem;
 }
 
@@ -1381,7 +1500,8 @@ footer {
 #map {
   width: 100%;
   height: 400px;
-  border-radius: 16px;         /* matches image radius */
+  border-radius: 16px;
+  /* matches image radius */
   overflow: hidden;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
 }
@@ -1401,9 +1521,3 @@ footer {
   color: #4f46e5;
   font-weight: 700;
 }
-
-
-
-
-
-

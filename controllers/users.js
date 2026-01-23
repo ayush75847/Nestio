@@ -34,8 +34,12 @@ module.exports.login = async (req, res) => {
     req.flash("success", "Logged In successfully");
     let redirectUrl = res.locals.redirectUrl || "/listings";
 
+    delete req.session.redirectUrl;
+
     if (redirectUrl.includes("/reviews")) {
-        return res.redirect("/listings");
+        const parts = redirectUrl.split("/"); // ["", "listings", "64ac3f…", "reviews"]
+        const listingId = parts[2];
+        redirectUrl = `/listings/${listingId}`;
     }
     res.redirect(redirectUrl);
 
@@ -47,6 +51,6 @@ module.exports.logout = (req, res, next) => {
             return next(err);
         }
         req.flash("success", "Logged Out Successfully");
-        res.redirect("/listings");
+        res.redirect("/");
     })
 };
