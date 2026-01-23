@@ -64,10 +64,6 @@ body {
   gap: 0.5rem;
 }
 
-.auth-links {
-  margin-left: auto !important;
-}
-
 .nav-link {
   position: relative;
   color: #495057 !important;
@@ -129,31 +125,27 @@ body {
   margin-right: auto;
 }
 
+/* RIGHT AUTH + SEARCH */
+.auth-links {
+  margin-left: auto !important;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Hide old center */
 .navbar-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: none;
 }
 
-.navbar-right {
-  margin-left: auto;
-}
-
-/* Responsive adjustment */
-@media (max-width: 991px) {
-  .navbar-center {
-    position: relative;
-    left: 0;
-    transform: none;
-    margin: 1rem 0;
-  }
-}
-
+/* =========================
+   SEARCH FORM
+========================= */
 .search-form {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  width: 320px;
+  width: 250px;
   max-width: 100%;
 }
 
@@ -161,15 +153,12 @@ body {
 .search-input {
   flex: 1;
   height: 42px;
-
   border: 2px solid #e9ecef;
   border-radius: 25px;
-  padding: 0 1.2rem;
-
+  padding: 0 1rem;
   font-size: 0.95rem;
   font-weight: 500;
   color: #495057;
-
   background-color: #ffffff;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -190,15 +179,12 @@ body {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
@@ -216,7 +202,6 @@ body {
   font-size: 0.9rem;
   line-height: 1;
 }
-
 
 /* =========================
    LOGOUT SPECIAL STYLE
@@ -273,6 +258,17 @@ body {
   .auth-links {
     margin-left: 0 !important;
     margin-top: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
   }
 
   .nav-link {
@@ -290,7 +286,6 @@ body {
     transform: translateY(-20px);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
@@ -301,18 +296,9 @@ body {
   animation: slideInDown 0.5s ease forwards;
 }
 
-.navbar-nav .nav-link:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.navbar-nav .nav-link:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.navbar-nav .nav-link:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
+.navbar-nav .nav-link:nth-child(1) { animation-delay: 0.1s; }
+.navbar-nav .nav-link:nth-child(2) { animation-delay: 0.2s; }
+.navbar-nav .nav-link:nth-child(3) { animation-delay: 0.3s; }
 
 /* =========================
    FOOTER STYLING (NESTIO)

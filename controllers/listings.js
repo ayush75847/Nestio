@@ -20,7 +20,6 @@ module.exports.index = async (req, res) => {
     res.render("listings/index.ejs", { listings, search });
 };
 
-
 module.exports.newListing = (req, res) => {
     res.render("listings/new.ejs");
 };
@@ -45,8 +44,6 @@ module.exports.createNew = async (req, res, next) => {
         } else {
             console.log("No coordinates found for this location");
         }
-
-        console.log("Coordinates found:", lat, lng);
 
     } catch (err) {
         console.error("Geocoding error:", err);

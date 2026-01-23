@@ -23,35 +23,29 @@
         </div>
       </div>
 
-      <!-- CENTER SEARCH -->
-      <div class="navbar-section navbar-center">
+      <!-- RIGHT AUTH + SEARCH -->
+      <div class="navbar-section navbar-right auth-links d-flex align-items-center gap-2">
+        <!-- Search Form -->
         <form class="search-form d-flex" role="search" action="/listings" method="get">
-          <input
-            class="form-control search-input"
-            type="search"
-            placeholder="Search listings..."
-            aria-label="Search"
-            name="search"
-          />
+          <input class="form-control search-input" type="search" placeholder="Search listings..." aria-label="Search"
+            name="search" />
           <button class="btn search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
-      </div>
 
-      <!-- RIGHT AUTH LINKS -->
-      <div class="navbar-section navbar-right auth-links">
+        <!-- Auth Links -->
         <div class="navbar-nav gap-2">
           <% if (!currUser) { %>
             <a class="nav-link fw-semibold px-3 rounded-pill" href="/signup">Sign Up</a>
             <a class="nav-link fw-semibold px-3 rounded-pill" href="/login">Login</a>
-          <% } %>
+            <% } %>
 
-          <% if (currUser) { %>
-            <a class="nav-link fw-semibold px-3 rounded-pill text-danger" href="/logout">
-              Log Out
-            </a>
-          <% } %>
+              <% if (currUser) { %>
+                <a class="nav-link fw-semibold px-3 rounded-pill text-danger" href="/logout">
+                  Log Out
+                </a>
+                <% } %>
         </div>
       </div>
 
