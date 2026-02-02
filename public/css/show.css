@@ -6,6 +6,10 @@
   display: flex;
   justify-content: center;
   padding: 3rem 1rem;
+  background:
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.12), transparent 60%);
+  min-height: 100vh;
 }
 
 .listing-show-card {

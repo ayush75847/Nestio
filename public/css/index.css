@@ -2,6 +2,40 @@
    INDEX PAGE - ALL LISTINGS
    =============================== */
 
+h3.listing-heading {
+  font-size: 1.8rem;           /* prominent size */
+  font-weight: 600;            /* semi-bold */
+  text-align: center;          /* center aligned */
+  color: #343a40;              /* dark shade for contrast */
+  margin: 1.5rem 0;            /* spacing above and below */
+  position: relative;          /* for decorative pseudo-element */
+  letter-spacing: 0.5px;       /* subtle spacing */
+}
+
+/* Optional: add an underline effect with a gradient */
+h3.listing-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h3.listing-heading {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h3.listing-heading {
+    font-size: 1.4rem;
+  }
+}
+
 /* Listing Cards */
 .card {
   border: none;

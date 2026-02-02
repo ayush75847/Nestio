@@ -1,9 +1,13 @@
+if(process.env.NODE_ENV != "production"){
+    require('dotenv').config({ path: '../.env' });
+}
+
 const mongoose = require("mongoose");
 const axios = require("axios");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
 
-const MONGOOSE_URL = "mongodb://127.0.0.1:27017/nestio";
+const MONGOOSE_URL = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/nestio";
 
 main()
   .then(() => console.log("MongoDB connected"))
@@ -47,7 +51,7 @@ const initDB = async () => {
 
     listingsWithGeometry.push({
       ...obj,
-      owner: "696f22efbc0e8c38755ae182", // default owner
+      owner: "69807045bf475a83365f0c9c", // default owner
       geometry,
     });
   }
