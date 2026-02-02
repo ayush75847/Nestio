@@ -1,0 +1,205 @@
+/* ===============================
+   INDEX PAGE - ALL LISTINGS
+   =============================== */
+
+/* Listing Cards */
+.card {
+  border: none;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* Equal height */
+.card,
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Image */
+.card-img-top {
+  height: 14rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Title */
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Price */
+.card-text {
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  color: #6c757d;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 26px rgba(102, 126, 234, 0.22);
+}
+
+.listing-link {
+  text-decoration: none;
+}
+
+/* No results section */
+.no-results {
+  padding: 3rem 2rem;
+  max-width: 500px;
+}
+
+.no-results i {
+  font-size: 3.5rem;
+  color: #667eea;
+  display: block;
+}
+
+.no-results h5 {
+  color: #2f3a5f;
+  font-size: 1.3rem;
+}
+
+.no-results p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* ===============================
+   RESPONSIVE STYLES - TABLETS
+   =============================== */
+
+@media (max-width: 992px) {
+  .card-img-top {
+    height: 13rem;
+  }
+
+  .no-results {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .no-results i {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 12rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+
+  .no-results {
+    padding: 2rem 1rem;
+  }
+
+  .no-results i {
+    font-size: 2.5rem;
+  }
+
+  .no-results h5 {
+    font-size: 1.2rem;
+  }
+
+  .no-results p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===============================
+   RESPONSIVE STYLES - MOBILE
+   =============================== */
+
+@media (max-width: 576px) {
+  /* Page heading */
+  h3.mb-4 {
+    font-size: 1.3rem;
+    margin-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .card-img-top {
+    height: 11rem;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  .card-body {
+    padding: 0.85rem;
+  }
+
+  .card-title {
+    font-size: 0.88rem;
+  }
+
+  .card-text {
+    font-size: 0.78rem;
+  }
+
+  .no-results {
+    padding: 1.8rem 1rem;
+  }
+
+  .no-results i {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .no-results h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .no-results p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===============================
+   RESPONSIVE STYLES - SMALL MOBILE
+   =============================== */
+
+@media (max-width: 480px) {
+  .row {
+    --bs-gutter-x: 0.75rem;
+    --bs-gutter-y: 1rem;
+  }
+
+  .card-img-top {
+    height: 10rem;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-text {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+}

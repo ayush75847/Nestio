@@ -3,6 +3,7 @@
 </script>
 
 <% layout('/layouts/boilerplate') -%>
+<% block('styles', `<link rel="stylesheet" href="/css/show.css">`) %>
 
   <div class="listing-show-wrapper">
     <div class="listing-show-card premium-card">
@@ -43,7 +44,8 @@
               <i class="fa-solid fa-pen"></i> Edit
             </a>
 
-            <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
+            <form method="post" action="/listings/<%= listing._id %>?_method=DELETE"
+               onsubmit="return confirm('Are you sure you want to delete Listing?')">
               <button class="btn delete-btn">
                 <i class="fa-solid fa-trash"></i> Delete
               </button>
@@ -73,7 +75,7 @@
 
         <!-- LEFT: Review Form (unchanged) -->
         <form class="review-form needs-validation" method="POST" action="/listings/<%= listing._id %>/reviews"
-          novalidate>
+          onsubmit="return confirm('Add review?')" novalidate>
 
           <div class="form-group">
             <label>Rating</label>
@@ -158,7 +160,7 @@
                   </p>
 
                   <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-                    class="review-delete-form">
+                    onsubmit="return confirm('Are you sure you want to delete review?')" class="review-delete-form">
                     <button type="submit" class="review-delete-btn"><i class="fa-solid fa-trash"></i></button>
                   </form>
                 </li>

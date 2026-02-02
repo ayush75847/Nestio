@@ -1,0 +1,887 @@
+/* ===============================
+   SHOW PAGE – NESTIO THEME
+   =============================== */
+
+.listing-show-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.listing-show-card {
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Image */
+.listing-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Details */
+.listing-details {
+  padding: 2rem 1rem 0;
+}
+
+.listing-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2f3a5f;
+}
+
+.listing-location {
+  color: #667eea;
+  margin: 0.4rem 0 1rem;
+}
+
+.listing-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.listing-price span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.listing-description {
+  margin-top: 1.2rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* Actions */
+.listing-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.listing-actions form {
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Edit */
+.edit-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+}
+
+.edit-btn:hover {
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.45);
+}
+
+/* Delete */
+.delete-btn {
+  background: #fff;
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.35);
+}
+
+.delete-btn:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* Owner info */
+.listing-image p {
+  margin-top: 1rem;
+  margin-right: .5rem;
+  max-width: 100%;
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  color: #6b7280;
+  text-align: right;
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.listing-image p i {
+  font-style: normal;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-left: 0.25rem;
+}
+
+/* ===============================
+   Custom Validation Icons – Nestio
+   =============================== */
+
+/* Add space on the right for icons */
+.listing-form .form-control {
+  padding-right: 2.5rem;
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem 1.25rem;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Valid input – green check */
+.listing-form .form-control.is-valid {
+  border-color: #198754 !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23198654'%3e%3cpath d='M16 2l-9 12L0 7l2-2 5 5 7-8z'/%3e%3c/svg%3e");
+}
+
+/* Invalid input – red cross */
+.listing-form .form-control.is-invalid {
+  border-color: #dc3545 !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23dc3545'%3e%3cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Focus glow */
+.listing-form .form-control.is-valid:focus {
+  box-shadow: 0 0 0 0.3rem rgba(25, 135, 84, 0.3);
+}
+
+.listing-form .form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.3rem rgba(220, 53, 69, 0.3);
+}
+
+/* Optional: smoother feedback animation */
+.invalid-feedback,
+.valid-feedback {
+  font-size: 0.85rem;
+  color: #dc3545;
+  /* keep consistent with invalid */
+  margin-top: 0.25rem;
+}
+
+/* =========================
+   Custom Alert Styling
+   ========================= */
+.custom-alert {
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, #f85032, #e73827);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(231, 56, 39, 0.35);
+  animation: slideIn 0.5s ease forwards;
+  margin-top: 20px;
+  /* Adjust this according to your navbar height */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  /* optional: to center and limit width */
+}
+
+.custom-alert .alert-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  animation: pulse 1.2s infinite;
+}
+
+.custom-alert .alert-message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Icon pulse */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* ===============================
+   REVIEW SECTION – NESTIO SHOW
+   =============================== */
+
+.listing-review-section {
+  margin-top: 3.2rem;
+  padding: 2.4rem 1rem;
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+  background:
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.1), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.1), transparent 60%);
+  border-radius: 22px;
+}
+
+/* Title */
+.review-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2f3a5f;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.2px;
+}
+
+/* Review form layout */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
+  max-width: 540px;
+}
+
+/* Form group */
+.review-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Labels */
+.review-form .form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3a4468;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* Inputs */
+.review-form input,
+.review-form textarea {
+  padding: 0.75rem 0.95rem;
+  padding-right: 2.5rem;
+  /* space for icon */
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem 1.25rem;
+}
+
+
+/* Invalid state */
+.review-form.was-validated input:invalid,
+.review-form.was-validated textarea:invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+/* Valid state */
+.review-form.was-validated input:valid,
+.review-form.was-validated textarea:valid {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+.review-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Placeholder */
+.review-form input::placeholder,
+.review-form textarea::placeholder {
+  color: #adb5bd;
+}
+
+/* Focus state */
+.review-form input:focus,
+.review-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow:
+    0 0 0 0.28rem rgba(102, 126, 234, 0.28),
+    0 12px 26px rgba(118, 75, 162, 0.28);
+  transform: translateY(-1px);
+}
+
+/* Error message */
+.review-form .invalid-feedback {
+  display: none;
+  font-size: 0.8rem;
+  color: #dc3545;
+  margin-top: 0.25rem;
+}
+
+/* Show error when invalid */
+.review-form.was-validated input:invalid~.invalid-feedback,
+.review-form.was-validated textarea:invalid~.invalid-feedback {
+  display: block;
+}
+
+/* Button spacing */
+/* ===============================
+   REVIEW SUBMIT / ADD REVIEW BTN
+   =============================== */
+
+.review-form .submit-btn {
+  padding: 0.7rem 1.6rem;
+   margin-top: .8rem;
+   margin-left: 2rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+
+  box-shadow: 0 10px 26px rgba(102, 126, 234, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* Hover */
+.review-form .submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(102, 126, 234, 0.45);
+  opacity: 0.95;
+}
+
+/* Active */
+.review-form .submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(102, 126, 234, 0.35);
+}
+
+/* Focus (keyboard accessibility) */
+.review-form .submit-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 0.25rem rgba(102, 126, 234, 0.35),
+    0 10px 26px rgba(118, 75, 162, 0.35);
+}
+
+/* ===============================
+   REVIEW LAYOUT – SPLIT
+   =============================== */
+
+.review-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.8rem;
+  align-items: flex-start;
+}
+
+/* Left side */
+.review-form-wrapper {
+  max-width: 540px;
+}
+
+/* Right side info (no white box) */
+.review-side-info {
+  padding: 2.2rem 2rem;
+  position: relative;
+}
+
+/* Accent line */
+.review-side-info::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+}
+
+/* Heading */
+.review-side-info h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #2f3a5f;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+/* Text */
+.review-side-info p {
+  font-size: 0.95rem;
+  color: #3a4468;
+  line-height: 1.7;
+  margin-bottom: 1.3rem;
+  padding-left: 1rem;
+}
+
+.review-side-info p b {
+  font-weight: 500;
+}
+
+/* List */
+.review-side-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.6rem;
+}
+
+.review-side-info ul li {
+  font-size: 0.92rem;
+  color: #3a4468;
+  margin-bottom: 0.7rem;
+  padding-left: 1.6rem;
+  position: relative;
+}
+
+.review-side-info ul li::before {
+  content: "•";
+  position: absolute;
+  left: 1rem;
+  color: #667eea;
+}
+
+/* Footer note */
+.review-note {
+  font-size: 0.85rem;
+  color: #6c757d;
+  padding-left: 1rem;
+}
+
+/* ===============================
+   ALL REVIEWS SECTION
+   =============================== */
+
+.reviews-container {
+  margin-top: 4rem;
+  padding: 2.6rem 2.2rem;
+  border-radius: 24px;
+  background: rgba(248, 249, 251, 0.92);
+  /* greyish white */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(37, 38, 40, 0.15);
+}
+
+/* Section title */
+.reviews-heading {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #2f3a5f;
+  margin-bottom: 2.4rem;
+}
+
+.reviews-count {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6c757d;
+  margin-left: 0.35rem;
+}
+
+/* List layout */
+.reviews-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Two per row */
+  gap: 1.8rem;
+}
+
+/* Review card */
+.review-card {
+  padding: 1.6rem 1.8rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(102, 126, 234, 0.18);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* for delete button alignment */
+}
+
+/* Header separation */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+/* Username */
+.review-user {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2f3a5f;
+}
+
+/* Stars */
+.review-stars {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f4b400;
+}
+
+/* Comment text */
+.review-comment {
+  margin-bottom: 1.2rem;
+  color: #495057;
+  line-height: 1.5;
+}
+
+/* Delete button */
+.review-delete-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.review-delete-btn {
+  background: #fff;
+  color: #dc3545;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid rgba(220, 53, 69, 0.35);
+  cursor: pointer;
+  padding: 2px 10px;
+}
+
+.review-delete-btn:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* ===============================
+   MAP SECTION – NESTIO THEME
+   =============================== */
+
+.listing-map-section {
+  max-width: 900px;
+  /* same as listing card */
+  margin: 0 auto 3rem;
+  /* center + spacing before reviews */
+  padding: 2rem 1.5rem 1.5rem;
+}
+
+.map-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2f3a5f;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-title i {
+  color: #667eea;
+}
+
+/* Map container */
+#map {
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;
+  /* matches image radius */
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Leaflet tweaks to match theme */
+.leaflet-control-zoom {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+.leaflet-popup-content b {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+/* ===============================
+   RESPONSIVE STYLES - TABLETS
+   =============================== */
+
+@media (max-width: 992px) {
+  /* Review layout - stack on tablets */
+  .review-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .review-side-info {
+    order: -1;
+    /* show info on top on tablet/mobile */
+    padding: 1.5rem 1rem;
+  }
+
+  /* Reviews list - single column */
+  .reviews-list {
+    grid-template-columns: 1fr;
+    /* One per row */
+  }
+
+  /* Map height adjustment */
+  #map {
+    height: 350px;
+  }
+}
+
+/* ===============================
+   RESPONSIVE STYLES - MOBILE
+   =============================== */
+
+@media (max-width: 768px) {
+  /* Wrapper padding */
+  .listing-show-wrapper {
+    padding: 2rem 0.75rem;
+  }
+
+  /* Image height */
+  .listing-image img {
+    height: 280px;
+    border-radius: 12px;
+  }
+
+  /* Owner info */
+  .listing-image p {
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    text-align: left;
+    margin-left: 0.5rem;
+  }
+
+  /* Details padding */
+  .listing-details {
+    padding: 1.5rem 0.75rem 0;
+  }
+
+  /* Title */
+  .listing-title {
+    font-size: 1.5rem;
+  }
+
+  /* Location */
+  .listing-location {
+    font-size: 0.95rem;
+  }
+
+  /* Price */
+  .listing-price {
+    font-size: 1.3rem;
+  }
+
+  .listing-price span {
+    font-size: 0.85rem;
+  }
+
+  /* Description */
+  .listing-description {
+    font-size: 0.95rem;
+  }
+
+  /* Action buttons - stack vertically on very small screens */
+  .listing-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .listing-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Map section */
+  .listing-map-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .map-title {
+    font-size: 1.25rem;
+  }
+
+  #map {
+    height: 300px;
+    border-radius: 12px;
+  }
+
+  /* Review section */
+  .listing-review-section {
+    margin-top: 2.5rem;
+    padding: 1.8rem 0.75rem;
+    border-radius: 16px;
+  }
+
+  .review-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Review form */
+  .review-form {
+    gap: 1.2rem;
+  }
+
+  .review-form input,
+  .review-form textarea {
+    padding: 0.65rem 0.85rem;
+    padding-right: 2.5rem;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .review-form textarea {
+    min-height: 100px;
+  }
+
+  /* Side info */
+  .review-side-info {
+    padding: 1.2rem 0.75rem;
+  }
+
+  .review-side-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .review-side-info p {
+    font-size: 0.9rem;
+  }
+
+  .review-side-info ul li {
+    font-size: 0.88rem;
+  }
+
+  /* Reviews container */
+  .reviews-container {
+    margin-top: 2.5rem;
+    padding: 1.8rem 1rem;
+    border-radius: 16px;
+  }
+
+  .reviews-heading {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Review cards */
+  .reviews-list {
+    gap: 1.2rem;
+  }
+
+  .review-card {
+    padding: 1.2rem 1rem;
+    border-radius: 14px;
+  }
+
+  .review-user {
+    font-size: 0.95rem;
+  }
+
+  .review-stars {
+    font-size: 0.85rem;
+  }
+
+  .review-comment {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-delete-btn {
+    padding: 4px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Alert */
+  .custom-alert {
+    font-size: 0.9rem;
+    padding: 0.9rem 1rem;
+    margin-top: 15px;
+  }
+
+  .custom-alert .alert-icon {
+    font-size: 1.2rem;
+  }
+}
+
+/* ===============================
+   RESPONSIVE STYLES - SMALL MOBILE
+   =============================== */
+
+@media (max-width: 480px) {
+  /* Even more compact on very small screens */
+  .listing-show-wrapper {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .listing-image img {
+    height: 240px;
+    border-radius: 10px;
+  }
+
+  .listing-title {
+    font-size: 1.3rem;
+  }
+
+  .listing-price {
+    font-size: 1.2rem;
+  }
+
+  .listing-actions {
+    gap: 0.6rem;
+  }
+
+  .btn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  #map {
+    height: 250px;
+  }
+
+  .review-form input,
+  .review-form textarea {
+    font-size: 0.85rem;
+  }
+
+  .review-card {
+    padding: 1rem 0.85rem;
+  }
+}

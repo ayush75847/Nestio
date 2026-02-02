@@ -1,4 +1,5 @@
 <% layout('/layouts/boilerplate') -%>
+<% block('styles', `<link rel="stylesheet" href="/css/new.css">`) %>
 
     <div class="listing-form-wrapper">
         <div class="listing-form-card premium-card">
@@ -8,7 +9,8 @@
                 Create New Listing
             </h3>
 
-            <form method="post" action="/listings" class="listing-form needs-validation" enctype="multipart/form-data" novalidate>
+            <form method="post" action="/listings" class="listing-form needs-validation" enctype="multipart/form-data"
+            onsubmit="return confirm('Create New Listing?')" novalidate>
 
                 <div class="form-group">
                     <label><i class="fa-solid fa-heading"></i> Title</label>

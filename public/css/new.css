@@ -1,0 +1,315 @@
+/* ===== Create Listing Page ===== */
+
+.listing-form-wrapper {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1rem;
+  background:
+    radial-gradient(circle at top left, rgba(102, 126, 234, 0.12), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(118, 75, 162, 0.12), transparent 60%);
+}
+
+/* Card */
+.premium-card {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  border-radius: 22px;
+  padding: 2.8rem 2.4rem;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  animation: floatIn 0.6s ease;
+}
+
+/* Glow border */
+.premium-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #343a40;
+}
+
+.form-title i {
+  margin-right: 0.4rem;
+  color: #667eea;
+}
+
+/* Form layout */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.3rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Labels */
+.listing-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.35rem;
+}
+
+.listing-form label i {
+  margin-right: 0.35rem;
+  color: #764ba2;
+}
+
+/* Inputs */
+.listing-form input,
+.listing-form textarea {
+  border-radius: 14px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.25s ease;
+}
+
+.listing-form input::placeholder,
+.listing-form textarea::placeholder {
+  color: #adb5bd;
+}
+
+.listing-form input:focus,
+.listing-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow:
+    0 0 0 0.2rem rgba(102, 126, 234, 0.25),
+    0 8px 20px rgba(102, 126, 234, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Button */
+.submit-btn {
+  margin-top: 1.2rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn i {
+  margin-right: 0.35rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(118, 75, 162, 0.5);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Animation */
+@keyframes floatIn {
+  from {
+    transform: translateY(30px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE STYLES
+========================= */
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .listing-form-wrapper {
+    padding: 2rem 1rem;
+    min-height: 70vh;
+  }
+
+  .premium-card {
+    max-width: 100%;
+    padding: 2.2rem 1.8rem;
+    border-radius: 18px;
+  }
+
+  .premium-card::before {
+    border-radius: 18px;
+  }
+
+  .form-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.1rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .listing-form label {
+    font-size: 0.8rem;
+  }
+
+  .listing-form input,
+  .listing-form textarea {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .submit-btn {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+}
+
+/* Mobile portrait (max-width: 480px) */
+@media (max-width: 480px) {
+  .listing-form-wrapper {
+    padding: 1.5rem 0.75rem;
+    min-height: 60vh;
+  }
+
+  .premium-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .premium-card::before {
+    border-radius: 16px;
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .form-title i {
+    margin-right: 0.3rem;
+    font-size: 1.1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .listing-form label {
+    font-size: 0.78rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .listing-form label i {
+    margin-right: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .listing-form input,
+  .listing-form textarea {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 11px;
+  }
+
+  .listing-form textarea {
+    min-height: 100px;
+  }
+
+  .submit-btn {
+    margin-top: 1rem;
+    padding: 0.65rem;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .submit-btn i {
+    margin-right: 0.3rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small screens (max-width: 360px) */
+@media (max-width: 360px) {
+  .listing-form-wrapper {
+    padding: 1.25rem 0.5rem;
+  }
+
+  .premium-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .premium-card::before {
+    border-radius: 14px;
+  }
+
+  .form-title {
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-title i {
+    font-size: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.9rem;
+  }
+
+  .listing-form label {
+    font-size: 0.75rem;
+  }
+
+  .listing-form input,
+  .listing-form textarea {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .submit-btn {
+    padding: 0.6rem;
+    font-size: 0.875rem;
+    border-radius: 11px;
+  }
+}

@@ -1,4 +1,5 @@
 <% layout('/layouts/boilerplate') -%>
+<% block('styles', `<link rel="stylesheet" href="/css/edit.css">`) %>
 
   <div class="listing-form-wrapper edit-mode">
     <div class="premium-card edit-card">
@@ -9,7 +10,7 @@
       </h3>
 
       <form method="post" action="/listings/<%= listing._id %>?_method=PUT" class="listing-form needs-validation"
-        enctype="multipart/form-data" novalidate>
+        enctype="multipart/form-data" onsubmit="return confirm('Save these changes?')" novalidate>
 
         <div class="form-group">
           <label><i class="fa-solid fa-heading"></i> Title</label>
