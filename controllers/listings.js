@@ -28,49 +28,47 @@ module.exports.newListing = (req, res) => {
 module.exports.createNew = async (req, res, next) => {
   const { location, country } = req.body.listing;
 
-  // 1️⃣ Get coordinates from Nominatim
+  // Get coordinates from OpenCage
   const query = encodeURIComponent(`${location}, ${country}`);
-  const geoURL = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`;
+
+  const geoURL = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${process.env.OPENCAGE_API_KEY}`;
 
   let lat = 0,
     lng = 0;
 
   try {
-    const geoResp = await axios.get(geoURL, {
-      headers: {
-        "User-Agent": "Nestio/1.0 (ayushrawat75847@gmail.com)",
-        "Accept-Language": "en",
-        Referer: "https://nestio-q5ac.onrender.com",
-      },
-    });
+    const geoResp = await axios.get(geoURL);
 
-    console.log("Geo Response:", geoResp.data);
-
-
-    if (geoResp.data.length) {
-      lat = parseFloat(geoResp.data[0].lat);
-      lng = parseFloat(geoResp.data[0].lon);
+    if (geoResp.data.results.length > 0) {
+      lat = geoResp.data.results[0].geometry.lat;
+      lng = geoResp.data.results[0].geometry.lng;
     } else {
-      console.log("No coordinates found for this location");
+      console.log("No coordinates found");
     }
   } catch (err) {
-    console.error("Geocoding error:", err.response?.data || err.message);
+    console.error("Geocoding error:", err.message);
   }
 
   let newListing = new Listing(req.body.listing);
+
   newListing.owner = req.user._id;
+
   newListing.geometry = {
     type: "Point",
     coordinates: [lng, lat],
   };
+
   if (req.file) {
     newListing.image = {
       filename: req.file.filename,
       url: req.file.path,
     };
   }
+
   await newListing.save();
-  req.flash("success", " New listing created");
+
+  req.flash("success", "New listing created");
+
   res.redirect(`/listings/${newListing._id}`);
 };
 
@@ -92,14 +90,38 @@ module.exports.editListing = async (req, res) => {
 
 module.exports.updateListing = async (req, res) => {
   const { id } = req.params;
-
   const listing = await Listing.findById(id);
   if (!listing) {
     req.flash("error", "Listing not found");
     return res.redirect("/listings");
   }
 
+  const { location, country } = req.body.listing;
+
+  const oldLocation = listing.location;
+  const oldCountry = listing.country;
+
   listing.set(req.body.listing);
+
+  if (
+    location.trim().toLowerCase() !== oldLocation?.trim().toLowerCase() ||
+    country.trim().toLowerCase() !== oldCountry?.trim().toLowerCase()
+  ) {
+    try {
+      const query = encodeURIComponent(`${location}, ${country}`);
+      const geoURL = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${process.env.OPENCAGE_API_KEY}`;
+      const geoResp = await axios.get(geoURL);
+      if (geoResp.data.results.length > 0) {
+        const { lat, lng } = geoResp.data.results[0].geometry;
+        listing.geometry = {
+          type: "Point",
+          coordinates: [lng, lat],
+        };
+      }
+    } catch (err) {
+      console.error("Geocoding error on update:", err.message);
+    }
+  }
 
   if (req.file) {
     try {
@@ -109,15 +131,10 @@ module.exports.updateListing = async (req, res) => {
     } catch (err) {
       console.error("Cloudinary deletion failed:", err);
     }
-
-    listing.image = {
-      filename: req.file.filename,
-      url: req.file.path,
-    };
+    listing.image = { filename: req.file.filename, url: req.file.path };
   }
 
   await listing.save();
-
   req.flash("success", "Listing updated");
   res.redirect(`/listings/${id}`);
 };
