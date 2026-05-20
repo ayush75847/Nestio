@@ -44,6 +44,9 @@ module.exports.createNew = async (req, res, next) => {
       },
     });
 
+    console.log("Geo Response:", geoResp.data);
+
+
     if (geoResp.data.length) {
       lat = parseFloat(geoResp.data[0].lat);
       lng = parseFloat(geoResp.data[0].lon);
