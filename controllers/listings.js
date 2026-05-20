@@ -39,6 +39,8 @@ module.exports.createNew = async (req, res, next) => {
     const geoResp = await axios.get(geoURL, {
       headers: {
         "User-Agent": "Nestio/1.0 (ayushrawat75847@gmail.com)",
+        "Accept-Language": "en",
+        Referer: "https://nestio-q5ac.onrender.com",
       },
     });
 
@@ -49,7 +51,7 @@ module.exports.createNew = async (req, res, next) => {
       console.log("No coordinates found for this location");
     }
   } catch (err) {
-    console.error("Geocoding error:", err);
+    console.error("Geocoding error:", err.response?.data || err.message);
   }
 
   let newListing = new Listing(req.body.listing);
